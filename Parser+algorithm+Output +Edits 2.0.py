@@ -32,11 +32,13 @@ for (i, line) in enumerate(file):
         df['Libraries'][libId]['Books'] = list(map(int, line.split(' ')))
         libId += 1
 
-#Sort By Highest Number of books: Tertiary Sort
+#Sort By Highest Number of books: 4th Sort
 libraries_sorted=sorted(df['Libraries'].items(),key=lambda item: item[1]['BookCount'], reverse=True)
-# Sort by Highest Number of Books per Day: Secondary Sort
+# Sort by Highest Number of Books per Day: 3rd Sort
 libraries_sorted = sorted(libraries_sorted, key=lambda item: item[1]['BooksPerDay'], reverse=True)
 
+# Sort By least Number of Days to finish uploading all its Books: 2nd Sort
+libraries_sorted = sorted(libraries_sorted, key=lambda item: (item[1]['BookCount'])/(item[1]['BooksPerDay']))
 # Sort by lowest NUmber of Days to Sign Up: Primary Sort
 libraries_sorted = sorted(
     libraries_sorted, key=lambda item: item[1]['SignupDays'])
@@ -71,7 +73,7 @@ for lib in libraries_sorted:
 output = {'LibCount': len(libraries), 'Libraries': libraries, 'NumberOfBooks': booksToSend,
           'BooksToSend': libBooks}
 
-
+print('Writing File')
 outputfile = output_Directory + "output_" + filename
 with open(outputfile, 'w') as file:
     file.write(str(output['LibCount']) + '\n')
