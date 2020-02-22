@@ -3,7 +3,7 @@ output_Directory = 'Outputs/'
 files = ['a_example.txt', 'b_read_on.txt', 'c_incunabula.txt',
          'd_tough_choices.txt', 'e_so_many_books.txt', 'f_libraries_of_the_world.txt']
 
-filename = files[5]
+filename = files[0]
 inputPath = input_Directory + filename
 print(inputPath)
 file = open(inputPath, 'r')
@@ -38,7 +38,9 @@ libraries_sorted=sorted(df['Libraries'].items(),key=lambda item: item[1]['BookCo
 libraries_sorted = sorted(libraries_sorted, key=lambda item: item[1]['BooksPerDay'], reverse=True)
 
 # Sort By least Number of Days to finish uploading all its Books: 2nd Sort
-libraries_sorted = sorted(libraries_sorted, key=lambda item: (item[1]['BookCount'])/(item[1]['BooksPerDay']))
+# libraries_sorted = sorted(libraries_sorted, key=lambda item: (item[1]['BookCount'])/(item[1]['BooksPerDay']))
+# Jad's SUggestion: If it takes longer to send books its fine. As long as it's first. Highest number of Days to finish
+libraries_sorted = sorted(libraries_sorted, key=lambda item: (item[1]['BookCount'])/(item[1]['BooksPerDay']),reverse=True)
 # Sort by lowest NUmber of Days to Sign Up: Primary Sort
 libraries_sorted = sorted(
     libraries_sorted, key=lambda item: item[1]['SignupDays'])

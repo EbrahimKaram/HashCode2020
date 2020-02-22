@@ -22,6 +22,6 @@ We are rank 16 in Lebanon in actual contest
 20,678,325
 
 ## Extended Round
-Current Code Grants Score of: 23,295,662
+Current Code Grants Score of: 23,481,749
 Worldwide Rank: 1200
 Lebanon Rank: 8
