@@ -1,8 +1,12 @@
+input_Directory = 'Inputs/'
+output_Directory = 'Outputs/'
 files = ['a_example.txt', 'b_read_on.txt', 'c_incunabula.txt',
          'd_tough_choices.txt', 'e_so_many_books.txt', 'f_libraries_of_the_world.txt']
-filename = files[5]
-print(filename)
-file = open(filename, 'r')
+
+filename = files[0]
+inputPath = input_Directory + files[0]
+print(inputPath)
+file = open(inputPath, 'r')
 
 df = {'BookCount': 0, 'LibraryCount': 0,
       'TotalDays': 0, 'BookScores': {}, 'Libraries': {}}
@@ -55,10 +59,10 @@ for lib in list(libraries):
     books_in_library = df['Libraries'][lib]['Books']
     # An improvement would be to sort these books by score
     distint_books_in_library = list(
-        set(books_in_library)-set(books_already_sent))
+        set(books_in_library) - set(books_already_sent))
     distint_books_in_library = sorted(
         distint_books_in_library, key=lambda k: df['BookScores'][k], reverse=True)
-    books_already_sent = books_already_sent+distint_books_in_library
+    books_already_sent = books_already_sent + distint_books_in_library
     if(len(distint_books_in_library) > 0):
         # THere are no distinctbooks so not worth sendig library through process
         booksToSend.append(len(distint_books_in_library))
@@ -72,11 +76,11 @@ output = {'LibCount': len(libraries), 'Libraries': libraries, 'NumberOfBooks': b
           'BooksToSend': libBooks}
 
 
-outputfile = "output_"+filename
+outputfile = output_Directory + "output_" + filename
 with open(outputfile, 'w') as file:
-    file.write(str(output['LibCount'])+'\n')
+    file.write(str(output['LibCount']) + '\n')
     for (i, lib) in enumerate(output['Libraries']):
-        file.write(str(output['Libraries'][i])+" " +
-                   str(output['NumberOfBooks'][i])+'\n')
+        file.write(str(output['Libraries'][i]) + " " +
+                   str(output['NumberOfBooks'][i]) + '\n')
         file.write(' '.join(str(book)
                             for book in output['BooksToSend'][i]) + "\n")
