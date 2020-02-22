@@ -3,7 +3,7 @@ output_Directory = 'Outputs/'
 files = ['a_example.txt', 'b_read_on.txt', 'c_incunabula.txt',
          'd_tough_choices.txt', 'e_so_many_books.txt', 'f_libraries_of_the_world.txt']
 
-filename = files[1]
+filename = files[5]
 inputPath = input_Directory + filename
 print(inputPath)
 file = open(inputPath, 'r')
@@ -32,10 +32,10 @@ for (i, line) in enumerate(file):
         df['Libraries'][libId]['Books'] = list(map(int, line.split(' ')))
         libId += 1
 
-
-# Sort by Highest Number of Books: Secondary Sort
-libraries_sorted = sorted(df['Libraries'].items(
-), key=lambda item: item[1]['BooksPerDay'], reverse=True)
+#Sort By Highest Number of books: Tertiary Sort
+libraries_sorted=sorted(df['Libraries'].items(),key=lambda item: item[1]['BookCount'], reverse=True)
+# Sort by Highest Number of Books per Day: Secondary Sort
+libraries_sorted = sorted(libraries_sorted, key=lambda item: item[1]['BooksPerDay'], reverse=True)
 
 # Sort by lowest NUmber of Days to Sign Up: Primary Sort
 libraries_sorted = sorted(
