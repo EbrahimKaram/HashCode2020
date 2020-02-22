@@ -1,10 +1,11 @@
 # Background
 Google Books
-# Team 
-Jihad
-Mohammad
-Maurice
-Myself
+# Team
+Name: Lord FarQuads
+* Jihad Sinno
+* Mohammad Abou Harb
+* Maurice Bou Zerdan
+* Myself
 
 # Parameters
 B
@@ -22,7 +23,7 @@ We are rank 16 in Lebanon in actual contest
 
 In
 Extended round got us 4th place
-Our latest score is 22 Million with exenteded
+Our latest score is 22 Million with extended
 734 in the world
 4th in Lebanon
 22,282,080
